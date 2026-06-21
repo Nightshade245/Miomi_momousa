@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miomi Momousa</title>
+
+    <link rel="icon" type="image/png" href=".png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background: #fce4ec;
+            overflow-x: hidden;
+        }
+
+        /* ===== FLOATING ICONS FULL BACKGROUND ===== */
+        .floating-icon {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatIcon linear infinite;
+            opacity: 0.12;
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        @keyframes floatIcon {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.3);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.12;
+            }
+            90% {
+                opacity: 0.12;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(720deg) scale(0.9);
+                opacity: 0;
+            }
+        }
+
+        /* ===== HERO GRADIENT ===== */
+        .hero-gradient {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8e8ff 30%, #f3e5f5 60%, #fce4ec 100%);
+            background-size: 400% 400%;
+            animation: heroGrad 25s ease infinite;
+        }
+
+        @keyframes heroGrad {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ===== FLOATING SHAPES ===== */
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: shapeFloat 10s ease-in-out infinite;
+        }
+
+        @keyframes shapeFloat {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(40px, -30px) scale(1.15);
+            }
+            66% {
+                transform: translate(-30px, 40px) scale(0.85);
+            }
+        }
+
+        /* ===== TWINKLE ===== */
+        .twinkle-star {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            animation: twinkle 2.5s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.1;
+                transform: scale(0.6);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.4);
+            }
+        }
+
+        /* ===== FLOAT CHARACTER ===== */
+        .float-character {
+            animation: floatChar 5s ease-in-out infinite;
+        }
+
+        @keyframes floatChar {
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-1deg);
+            }
+            50% {
+                transform: translateY(-18px) rotate(1deg);
+            }
+        }
+
+        /* ===== PULSE RING ===== */
+        .pulse-ring {
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 2px solid rgba(233, 30, 99, 0.20);
+            animation: pulseRing 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .pulse-ring-delay {
+            animation-delay: 1.5s;
+        }
+
+        /* ===== GLOW RING ===== */
+        .glow-ring {
+            animation: glowRing 3s ease-in-out infinite;
+        }
+
+        @keyframes glowRing {
+            0%,
+            100% {
+                box-shadow: 0 0 40px rgba(233, 30, 99, 0.15), 0 0 80px rgba(233, 30, 99, 0.08);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(233, 30, 99, 0.25), 0 0 120px rgba(233, 30, 99, 0.12);
+            }
+        }
+
+        /* ===== FLOATING TAGLINE ===== */
+        .floating-tagline {
+            animation: floatText 4s ease-in-out infinite;
+        }
+
+        @keyframes floatText {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ===== SECTION BACKGROUND ===== */
+        .section-light {
+            background: #fdf2f8;
+        }
+        .section-soft {
+            background: #fce4ec;
+        }
+        .section-pink {
+            background: linear-gradient(180deg, #fdf2f8 0%, #fce4ec 100%);
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(233, 30, 99, 0.06);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 16px 56px rgba(233, 30, 99, 0.10);
+            border-color: rgba(233, 30, 99, 0.15);
+        }
+
+        /* ===== BUTTON ===== */
+        .btn-primary {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            font-weight: 700;
+            padding: 14px 34px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 24px rgba(233, 30, 99, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(233, 30, 99, 0.06);
+            color: #c2185b;
+            font-weight: 700;
+            padding: 14px 34px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 1.5px solid rgba(233, 30, 99, 0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(233, 30, 99, 0.10);
+            transform: translateY(-4px) scale(1.05);
+            border-color: rgba(233, 30, 99, 0.25);
+        }
+
+        /* ===== PULSE BUTTON ===== */
+        .pulse-btn {
+            animation: pulseBtn 2.5s ease-in-out infinite;
+        }
+        @keyframes pulseBtn {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* ===== LIVE INDICATOR ===== */
+        .live-dot {
+            animation: liveBlink 1.5s ease-in-out infinite;
+        }
+        @keyframes liveBlink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        /* ===== SCROLL FADE ===== */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .scroll-fade-left {
+            opacity: 0;
+            transform: translateX(-40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-fade-left.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+        .scroll-fade-right {
+            opacity: 0;
+            transform: translateX(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-fade-right.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        /* ===== NAVBAR DENGAN GRADIEN ===== */
+        .navbar-light {
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(to right, #e91e63, #f06292, #e91e63) 1;
+            box-shadow: 0 2px 20px rgba(233, 30, 99, 0.05);
+        }
+
+        .navbar-light .nav-link {
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .navbar-light .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #e91e63, #f06292);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-light .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ===== TAG PILL ===== */
+        .tag-pill {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .tag-pill:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.08);
+        }
+
+        /* ===== SPARKLE TEXT ===== */
+        .sparkle-text {
+            background: linear-gradient(135deg, #e91e63, #c2185b, #880e4f, #e91e63);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: sparkle 4s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fce4ec;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #e91e63, #c2185b);
+            border-radius: 3px;
+        }
+
+        /* ===== SOCIAL ICON ===== */
+        .social-icon {
+            transition: all 0.35s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: rgba(233, 30, 99, 0.03);
+            border: 1px solid rgba(233, 30, 99, 0.06);
+            color: #4a4a4a;
+            text-decoration: none;
+        }
+        .social-icon:hover {
+            background: rgba(233, 30, 99, 0.06);
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 8px 24px rgba(233, 30, 99, 0.06);
+            color: #c2185b;
+            border-color: rgba(233, 30, 99, 0.15);
+        }
+
+        /* ===== DIVIDER ===== */
+        .section-divider {
+            width: 64px;
+            height: 3px;
+            background: linear-gradient(to right, #e91e63, #f06292);
+            border-radius: 2px;
+            margin: 0 auto 8px auto;
+            opacity: 0.6;
+        }
+
+        /* ===== SECTION SHAPE ===== */
+        .section-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        /* ===== TAGLINE BADGE ===== */
+        .tagline-badge {
+            background: rgba(233, 30, 99, 0.06);
+            border: 1px solid rgba(233, 30, 99, 0.08);
+            border-radius: 50px;
+            padding: 6px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #c2185b;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .tagline-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.06);
+        }
+
+        /* ===== CARD HOVER GLOW ===== */
+        .card-hover-glow {
+            transition: all 0.35s ease;
+        }
+        .card-hover-glow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.04);
+            border-color: rgba(233, 30, 99, 0.08);
+        }
+
+        /* ===== TEXT COLORS ===== */
+        .text-rose-light {
+            color: #e91e63;
+        }
+        .text-rose-mid {
+            color: #c2185b;
+        }
+        .text-rose-dark {
+            color: #880e4f;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .floating-icon {
+                opacity: 0.06;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== ANIMATED LETTER 3D ===== */
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: perspective(500px) rotateY(20deg) translateY(30px);
+            transition: none;
+        }
+
+        /* ===== FADE IN OUT SCROLL ===== */
+        .fade-scroll {
+            opacity: 0;
+            transition: opacity 0.9s ease, transform 0.9s ease;
+            transform: translateY(30px);
+        }
+        .fade-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== NAVBAR LOGO GLOW ===== */
+        .logo-glow {
+            transition: all 0.3s ease;
+        }
+        .logo-glow:hover {
+            text-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+        }
+
+        /* ===== CARD ANIMATION DELAY ===== */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* ===== FLOATING ICON EXTRA STYLE ===== */
+        .floating-icon:nth-child(odd) {
+            animation-duration: 25s;
+        }
+        .floating-icon:nth-child(even) {
+            animation-duration: 35s;
+        }
+
+        /* ===== CREDIT CARD HOVER ===== */
+        .credit-card {
+            transition: all 0.35s ease;
+        }
+        .credit-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.04);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== FLOATING ICONS FULL BACKGROUND ===== -->
+    <div id="floatingIcons"></div>
+
+    <!-- ===== NAVBAR DENGAN GRADIEN ===== -->
+    <nav class="navbar-light fixed top-0 w-full z-50 px-4 py-3 md:px-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold text-rose-mid logo-glow transition-colors">
+                ✦ Miomi
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+                <a href="#about" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">About</a>
+                <a href="#likes" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">Like</a>
+                <a href="#hobbies" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">Hobi</a>
+                <a href="#content" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">Konten</a>
+                <a href="#social" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">Social</a>
+                <a href="#support" class="nav-link text-gray-600 hover:text-rose-mid transition-colors">Support</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-gray-600 hover:text-rose-mid text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden mt-3 pb-3 flex flex-col items-center gap-3 text-sm font-semibold border-t border-pink-100 pt-3">
+            <a href="#about" class="text-gray-600 hover:text-rose-mid transition-colors">About</a>
+            <a href="#likes" class="text-gray-600 hover:text-rose-mid transition-colors">Like</a>
+            <a href="#hobbies" class="text-gray-600 hover:text-rose-mid transition-colors">Hobi</a>
+            <a href="#content" class="text-gray-600 hover:text-rose-mid transition-colors">Konten</a>
+            <a href="#social" class="text-gray-600 hover:text-rose-mid transition-colors">Social</a>
+            <a href="#support" class="text-gray-600 hover:text-rose-mid transition-colors">Support</a>
+        </div>
+    </nav>
+
+    <!-- ===== SECTION 1: HERO ===== -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center px-4 pt-20 pb-16 relative overflow-hidden">
+
+        <!-- Background Shapes -->
+        <div class="hero-shape w-96 h-96 bg-pink-200/40 top-20 -right-20"></div>
+        <div class="hero-shape w-80 h-80 bg-purple-200/30 bottom-20 -left-20" style="animation-delay: 2s;"></div>
+        <div class="hero-shape w-64 h-64 bg-rose-200/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: 4s;"></div>
+
+        <!-- Twinkle Stars -->
+        <div class="twinkle-star text-rose-300 text-xl top-[10%] left-[8%]" style="animation-delay: 0.5s;">✦</div>
+        <div class="twinkle-star text-rose-300 text-2xl top-[20%] right-[12%]" style="animation-delay: 1.2s;">✦</div>
+        <div class="twinkle-star text-purple-300 text-xl bottom-[25%] left-[5%]" style="animation-delay: 2s;">✦</div>
+        <div class="twinkle-star text-rose-300 text-2xl bottom-[30%] right-[8%]" style="animation-delay: 0.8s;">✦</div>
+        <div class="twinkle-star text-pink-300 text-lg top-[15%] left-[45%]" style="animation-delay: 1.8s;">✦</div>
+        <div class="twinkle-star text-purple-300 text-xl bottom-[15%] left-[55%]" style="animation-delay: 2.5s;">✦</div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+
+            <!-- Avatar -->
+            <div class="flex justify-center mb-6">
+                <div class="relative">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring pulse-ring-delay"></div>
+                    <div class="glow-ring absolute inset-0 rounded-full scale-110"></div>
+                    <div class="w-44 h-44 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-pink-300 to-rose-400 flex items-center justify-center float-character shadow-2xl shadow-pink-300/30 relative overflow-hidden">
+                        <img src="mio.png" alt="Miomi Momousa" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nama dengan animasi huruf -->
+            <div class="text-center w-full">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1 text-gray-800 inline-block">
+                    Miomi <span class="sparkle-text">Momousa</span>
+                </h1>
+            </div>
+
+            <p id="heroSub" class="text-lg md:text-xl text-rose-400 font-medium mb-1 floating-tagline text-center">
+                ✦ ミオ 三桃鬼 ✦
+            </p>
+
+            <div class="tagline-badge mb-4 shadow-md shadow-pink-200/30 text-center inline-block">
+                🎀 INDEPENDENT VTUBER
+            </div>
+
+            <p id="heroTagline" class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-7 leading-relaxed floating-tagline text-center" style="animation-delay: 2s;">
+                "Spirit yang suka teori konspirasi & headpat"
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#support" class="btn-secondary">
+                    <i class="fas fa-heart text-rose-400"></i> Dukung Mio
+                </a>
+                <a href="https://www.youtube.com/watch?v=bh9BgZmFPXg!" class="btn-primary pulse-btn">
+                    <i class="fab fa-youtube"></i> Tonton Debut
+                </a>
+                <a href="https://discord.com/invite/KUmmfQwtA8" class="social-icon">
+                    <i class="fab fa-discord text-indigo-400 text-xl"></i>
+                    <span class="text-xs">Join Server</span>
+                </a>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-rose-300/40 animate-bounce">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: ABOUT ===== -->
+    <section id="about" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-64 h-64 bg-pink-200/30 -top-20 -right-20"></div>
+        <div class="section-shape w-48 h-48 bg-purple-200/20 -bottom-20 -left-20"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="section-divider"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-1">
+                    ✦ About Miomi ✦
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 md:p-8 fade-scroll delay-1">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-user-circle mr-2"></i> Identitas
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">Nama</span>
+                            <span class="font-semibold text-gray-700">Miomi Momousa</span>
+                        </div>
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">Panggilan</span>
+                            <span class="font-semibold text-rose-mid">Mio, Mii, Miok</span>
+                        </div>
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">Umur</span>
+                            <span class="font-semibold text-gray-700">Udah Besar</span>
+                        </div>
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">Tanggal Lahir</span>
+                            <span class="font-semibold text-gray-700">16 Agustus</span>
+                        </div>
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">Ras</span>
+                            <span class="font-semibold text-gray-700">Spirit</span>
+                        </div>
+                        <div class="flex justify-between border-b border-pink-50 pb-2">
+                            <span class="text-gray-400">MBTI</span>
+                            <span class="font-semibold text-rose-mid">INFP</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Bahasa</span>
+                            <span class="font-semibold text-gray-700 text-right text-xs">Indo (ASELI), English, Jepang (animek)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6 md:p-8 fade-scroll delay-2">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-star mr-2"></i> Kepribadian
+                    </h3>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1.5 bg-pink-50 rounded-full text-rose-mid text-xs font-semibold border border-pink-100 hover:scale-105 transition-all">🎀 Aktif</span>
+                        <span class="px-3 py-1.5 bg-pink-50 rounded-full text-rose-mid text-xs font-semibold border border-pink-100 hover:scale-105 transition-all">🌸 Ceria</span>
+                        <span class="px-3 py-1.5 bg-pink-50 rounded-full text-rose-mid text-xs font-semibold border border-pink-100 hover:scale-105 transition-all">✨ Lucu</span>
+                        <span class="px-3 py-1.5 bg-pink-50 rounded-full text-rose-mid text-xs font-semibold border border-pink-100 hover:scale-105 transition-all">💖 Imut</span>
+                        <span class="px-3 py-1.5 bg-rose-50 rounded-full text-rose-500 text-xs font-semibold border border-rose-200 relative hover:scale-105 transition-all">
+                            <b>"Polos"</b>
+                        </span>
+                    </div>
+                    <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100">
+                        <p class="text-rose-400/70 text-sm italic leading-relaxed">
+                            <b>"makasih ya udah support mio, aku bakal pake energi positif dari kalian buat terus nyebarin tawa dan kehangatan-
+                            kalian bukan cuma penonton, tapi bagian dari memori mio, lop lop mewmories (^_^)♫♫"</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: LIKE & DISLIKE ===== -->
+    <section id="likes" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-72 h-72 bg-pink-200/30 top-20 right-20"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="section-divider"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-1">
+                    ❤️ Like & Dislike
+                </h2>
+                <p class="text-gray-400 text-sm">Yang bikin Mio seneng & yang bikin Mio... grrr! 😤</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 md:p-8 fade-scroll delay-1">
+                    <h3 class="text-xl font-bold text-rose-mid mb-4">
+                        <i class="fas fa-heart text-rose-400 mr-2"></i> Suka
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">🕵️ Teori konspirasi</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">🧸 Benda lucu dan fluffy</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">🤗 Headpat</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">👻 Cerita seram dan horror</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">👨 Lelaki tampan menawan <span class="text-[10px] text-rose-400">(kiw)</span></li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-50 transition-all hover:translate-x-2">💤 Tidur siang yang "sebentar"</li>
+                    </ul>
+                </div>
+
+                <div class="card p-6 md:p-8 fade-scroll delay-2">
+                    <h3 class="text-xl font-bold text-rose-500 mb-4">
+                        <i class="fas fa-heart-broken text-rose-400 mr-2"></i> Benci
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-rose-50 transition-all hover:translate-x-2">🪳 Kecoak</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-rose-50 transition-all hover:translate-x-2">🥬 Sayur <span class="text-[10px] text-rose-400">(kecuali Kentang dan Wortel)</span></li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-rose-50 transition-all hover:translate-x-2">☀️ Kepanasan</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-rose-50 transition-all hover:translate-x-2">😷 Sariawan</li>
+                        <li class="flex items-center gap-3 p-2 rounded-lg hover:bg-rose-50 transition-all hover:translate-x-2">💔 Ditinggalin!</li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-rose-50/50 rounded-xl border border-rose-100">
+                        <p class="text-[10px] text-rose-400/60">
+                            <b><i class="fas fa-exclamation-triangle mr-1"></i> Yang suka SPOILER bakalan ditinggalin, kecuali mio yang minta sendiri</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: HOBBIES ===== -->
+    <section id="hobbies" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-56 h-56 bg-purple-200/20 -top-20 left-1/2"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="section-divider"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-1">
+                    ✦ Hobi & Favorite ✦
+                </h2>
+                <p class="text-gray-400 text-sm">Hal-hal yang bikin Mio betah seharian 😆</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-6 fade-scroll delay-1">
+                    <h3 class="text-lg font-bold text-rose-mid mb-3">
+                        <i class="fas fa-paint-brush mr-2"></i> Hobi
+                    </h3>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🎨 Menggambar</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">📚 Baca Buku, Novel, Komik</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">📺 Nonton Drakor, Dracin, Anime</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🍜 MaKaAAnnNN</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">😈 Gangguin Orang</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🎮 VALO</li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-rose-50/50 rounded-xl border border-rose-100">
+                        <p class="text-[10px] text-rose-400/60">
+                            <i class="fas fa-exclamation-triangle mr-1"></i> doomscrolling
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card p-6 fade-scroll delay-2">
+                    <h3 class="text-lg font-bold text-rose-mid mb-3">
+                        <i class="fas fa-film mr-2"></i> Anime / Manga
+                    </h3>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">✨ Magi : The Labyrinth Of Magic</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">👑 Guilty Crown</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">⛩️ Noragami</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🦸 My Hero Academia</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">💕 Love, Chuunibyou & Other delision</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🌸 Kimi Ni Todoke</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🔥 Fairy Tail</li>
+                    </ul>
+                </div>
+
+                <div class="card p-6 fade-scroll delay-3">
+                    <h3 class="text-lg font-bold text-rose-mid mb-3">
+                        <i class="fas fa-music mr-2"></i> Music
+                    </h3>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🎵 OP/ED Anime</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">📱 Lagu Viral</li>
+                        <li class="p-1.5 rounded hover:bg-pink-50 transition-all hover:translate-x-2">🎶 Lagu yang didengerin my my</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 5: CONTENT PLANNING ===== -->
+    <section id="content" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-64 h-64 bg-pink-200/30 top-20 left-20"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="section-divider"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-1">
+                    📋 Content Planning
+                </h2>
+                <p class="text-gray-400 text-sm">Apa aja sih yang bakal Mio lakuin? 👀</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 md:p-8 fade-scroll delay-1">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-comment-dots mr-2"></i> Konten Harian
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100 hover:bg-pink-100/50 transition-all hover:scale-105">Freetalk - Ngobrol Bersama</div>
+                        <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100 hover:bg-pink-100/50 transition-all hover:scale-105">🎥 Handcam - Mukbang, Chef, Unboxing</div>
+                        <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100 hover:bg-pink-100/50 transition-all hover:scale-105">🎮 Gaming - Main Game apa saja</div>
+                        <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100 hover:bg-pink-100/50 transition-all hover:scale-105">📱 Moshi Mio? - Pillow Talk ala call</div>
+                        <div class="p-4 bg-pink-50/50 rounded-xl border border-pink-100 hover:bg-pink-100/50 transition-all hover:scale-105">📖 Short Cerita Anonim - Belum Ada Nama</div>
+                    </div>
+                </div>
+
+                <div class="card p-6 md:p-8 fade-scroll delay-2">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-star mr-2"></i> Important!
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-rose-50/50 rounded-xl border border-rose-100 hover:bg-rose-100/50 transition-all hover:scale-105">🤝 Collab - Dengan teman-teman VTuber lainnya</div>
+                        <div class="p-4 bg-rose-50/50 rounded-xl border border-rose-100 hover:bg-rose-100/50 transition-all hover:scale-105">📚 Belajar Bareng Mio - Bahasa, masak, dll</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 6: SOCIAL MEDIA ===== -->
+    <section id="social" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-56 h-56 bg-pink-200/20 -top-20 right-20"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="section-divider"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-1">
+                    🌸 Social Media & Tags
+                </h2>
+                <p class="text-gray-400 text-sm">Temuin Mio di mana aja! ✨</p>
+            </div>
+
+            <div class="text-center mb-8">
+                <div class="inline-block bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-sm border border-pink-100 hover:scale-105 transition-all">
+                    <p class="text-[10px] text-gray-400 uppercase tracking-wider">Fan Name</p>
+                    <p class="text-2xl font-extrabold text-rose-mid">✦ Memios ✦</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 md:p-8 fade-scroll delay-1">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-hashtag mr-2"></i> Tags
+                    </h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3 p-2 bg-pink-50/50 rounded-xl hover:bg-pink-100/50 transition-all">
+                            <span class="text-[10px] text-gray-400">General:</span>
+                            <span class="tag-pill px-3 py-1 bg-pink-100 rounded-full text-rose-mid text-[10px] font-semibold border border-pink-200">#Miomimomousa</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 bg-pink-50/50 rounded-xl hover:bg-pink-100/50 transition-all">
+                            <span class="text-[10px] text-gray-400">Live:</span>
+                            <span class="tag-pill px-3 py-1 bg-pink-100 rounded-full text-rose-mid text-[10px] font-semibold border border-pink-200">#Mionair</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 bg-pink-50/50 rounded-xl hover:bg-pink-100/50 transition-all">
+                            <span class="text-[10px] text-gray-400">Fan Art:</span>
+                            <span class="tag-pill px-3 py-1 bg-pink-100 rounded-full text-rose-mid text-[10px] font-semibold border border-pink-200">#MioHwall</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-2 bg-pink-50/50 rounded-xl hover:bg-pink-100/50 transition-all">
+                            <span class="text-[10px] text-gray-400">Clip:</span>
+                            <span class="tag-pill px-3 py-1 bg-pink-100 rounded-full text-rose-mid text-[10px] font-semibold border border-pink-200">#Clipmiomi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6 md:p-8 fade-scroll delay-2">
+                    <h3 class="text-lg font-bold text-rose-mid mb-4">
+                        <i class="fas fa-share-alt mr-2"></i> Social Media
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="https://www.youtube.com/@miomi_usa" class="social-icon">
+                            <img src="Youtube.png" alt="youtube" class="w-5 h-5 object-contain">
+                            <span class="text-xs">YouTube</span>
+                        </a>
+                        <a href="https://x.com/miomi_usa" class="social-icon">
+                            <img src="X.png" alt="x" class="w-5 h-5 object-contain">
+                            <span class="text-xs">Twitter (X)</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@miomi_usa" class="social-icon">
+                            <i class="fab fa-tiktok text-purple-500 text-xl"></i>
+                            <span class="text-xs">TikTok</span>
+                        </a>
+                        <a href="https://tako.id/miomi_usa" class="social-icon">
+                            <img src="tako.png" alt="Tako" class="w-5 h-5 object-contain">
+                            <span class="text-xs">Tako</span>
+                        </a>
+                        <a href="https://trakteer.id/miomi_usa" class="social-icon">
+                            <img src="trakteer.png" alt="Trakteer" class="w-5 h-5 object-contain">
+                            <span class="text-xs">Trakteer</span>
+                        </a>
+                        <a href="https://sociabuzz.com/miomi_usa" class="social-icon">
+                            <img src="socialbuzz.png" alt="Socialbuzz" class="w-5 h-5 object-contain">
+                            <span class="text-xs">Socialbuzz</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 7: DONATION ===== -->
+    <section id="support" class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="section-shape w-72 h-72 bg-pink-200/20 -bottom-20 -left-20"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="card p-8 md:p-12 fade-scroll text-center">
+                <div class="section-divider mx-auto"></div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
+                    🥕 Donasi Wortel
+                </h2>
+                <p class="text-gray-400 text-sm mb-6">
+                    Dukung Mio dengan donate unit Wortel!
+                </p>
+
+                <div class="p-5 bg-pink-50/50 rounded-2xl border border-pink-100 mb-5">
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Dukung terus Miomi dengan donate unit Wortel agar Mio bisa live streaming
+                        yang lebih baik. Terima kasih atas donasi atau dukungannya ya!
+                    </p>
+                </div>
+
+                <div class="p-5 bg-rose-50/50 rounded-2xl border border-rose-100 mb-7">
+                    <p class="text-rose-400/70 text-sm italic leading-relaxed">
+                        "makasih ya udah support mio, aku bakal pake energi positif dari kalian buat terus nyebarin tawa dan kehangatan-
+                        kalian bukan cuma penonton, tapi bagian dari memori mio, lop lop mewmories (^_^)♫♫"
+                    </p>
+                </div>
+
+                <a href="https://linktr.ee/miomimomousa" class="btn-primary">
+                    <i class="fas fa-heart mr-2"></i> Info lengkapnya disini
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 8: CREDITS & FOOTER (FULL) ===== -->
+    <section class="py-16 px-4 border-t border-pink-100 section-light">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-lg font-bold text-center text-rose-mid mb-8">
+                ✦ Credits ✦
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">Papa (L2D Artis)</p>
+                    <p class="text-sm text-rose-mid font-medium">@ryokyouryu_</p>
+                    <p class="text-[10px] text-gray-400">Mama (Rigger)</p>
+                    <p class="text-sm text-rose-mid font-medium">@roryz_</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">OP & End Art</p>
+                    <p class="text-sm text-rose-mid font-medium">@shiroikumo_1</p>
+                    <p class="text-[10px] text-gray-400">OP & End Animation</p>
+                    <p class="text-sm text-rose-mid font-medium">@vixell.commision</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">PV Video & Lore Video</p>
+                    <p class="text-sm text-rose-mid font-medium">@ShoraWorks_</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">Thumbnail</p>
+                    <p class="text-sm text-rose-mid font-medium">@expnero</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">BGM</p>
+                    <p class="text-sm text-rose-mid font-medium">@damian_ha10</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">Background</p>
+                    <p class="text-sm text-rose-mid font-medium">@Snowbear Project</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">Stinger</p>
+                    <p class="text-sm text-rose-mid font-medium">@StingfievlyArt</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-[10px] text-gray-400">Taifun Atelier Team</p>
+                    <p class="text-sm text-rose-mid font-medium">CssTako</p>
+                </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-center text-rose-mid mt-12 mb-8">
+                ✦ Special Support ✦
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Shiyou (Manager)</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Alea Blackwell</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Wang Lynch</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Hasegawa Miu</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Meh</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@Anaxarava</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@1wong12</p>
+                </div>
+                <div class="bg-pink-50/50 rounded-xl p-4 border border-pink-100 credit-card">
+                    <p class="text-sm text-rose-mid font-medium">@rennobuyuki9</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center text-gray-400 text-[10px]">
+                <p>© 2026 Miomi Momousa ✦ Made with 💖 & 🥕</p>
+                <p class="mt-0.5 text-gray-300">"Mio loves you, Memios!" ✨</p>
+                <p class="mt-1 text-gray-300"><b>this website created by Anaxarava</b></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== FLOATING ICONS (FULL BACKGROUND) =====
+        function createFloatingIcons() {
+            const container = document.getElementById('floatingIcons');
+            const icons = ['♥', '♡', '🥕', '💖', '🌸', '✨', '⭐', '🌙', '🍀', '🎀', '🌺', '💫', '🌈', '🦋', '🌷', '🌻', '💗', '🌟', '☁️', '💕'];
+            const colors = ['#e91e63', '#c2185b', '#f06292', '#ec407a', '#ad1457', '#880e4f', '#ff80ab', '#f48fb1', '#ce93d8', '#ba68c8'];
+
+            for (let i = 0; i < 60; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-icon';
+                el.textContent = icons[Math.floor(Math.random() * icons.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.fontSize = (Math.random() * 2.5 + 0.8) + 'rem';
+                el.style.animationDuration = (Math.random() * 40 + 25) + 's';
+                el.style.animationDelay = (Math.random() * 40) + 's';
+                el.style.color = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(el);
+            }
+        }
+        createFloatingIcons();
+
+        // ===== ANIMASI HURUF 3D =====
+        function animateText() {
+            // Hero Title
+            const titleEl = document.getElementById('heroTitle');
+            if (!titleEl) return;
+
+            const titleText = titleEl.textContent;
+            titleEl.innerHTML = titleText.split('').map(char =>
+                char === ' ' ? '&nbsp;' : `<span class="letter" style="display:inline-block;">${char}</span>`
+            ).join('');
+
+            const titleLetters = titleEl.querySelectorAll('.letter');
+            anime({
+                targets: titleLetters,
+                opacity: [0, 1],
+                translateY: [40, 0],
+                translateX: [20, 0],
+                scale: [0.5, 1],
+                rotateZ: [-15, 0],
+                rotateY: [30, 0],
+                duration: 900,
+                delay: (el, i) => i * 50,
+                easing: 'easeOutCubic'
+            });
+
+            // Hero Sub
+            const subEl = document.getElementById('heroSub');
+            if (!subEl) return;
+
+            const subText = subEl.textContent;
+            subEl.innerHTML = subText.split('').map(char =>
+                char === ' ' ? '&nbsp;' : `<span class="letter" style="display:inline-block;">${char}</span>`
+            ).join('');
+
+            const subLetters = subEl.querySelectorAll('.letter');
+            anime({
+                targets: subLetters,
+                opacity: [0, 1],
+                translateY: [25, 0],
+                scale: [0.6, 1],
+                duration: 700,
+                delay: (el, i) => i * 35 + 500,
+                easing: 'easeOutCubic'
+            });
+
+            // Hero Tagline
+            const taglineEl = document.getElementById('heroTagline');
+            if (!taglineEl) return;
+
+            const taglineText = taglineEl.textContent;
+            taglineEl.innerHTML = taglineText.split('').map(char =>
+                char === ' ' ? '&nbsp;' : `<span class="letter" style="display:inline-block;">${char}</span>`
+            ).join('');
+
+            const taglineLetters = taglineEl.querySelectorAll('.letter');
+            anime({
+                targets: taglineLetters,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                scale: [0.7, 1],
+                duration: 600,
+                delay: (el, i) => i * 25 + 1000,
+                easing: 'easeOutCubic'
+            });
+        }
+
+        window.addEventListener('load', animateText);
+
+        // ===== FADE IN & FADE OUT SETIAP SCROLL =====
+        function handleFadeScroll() {
+            document.querySelectorAll('.fade-scroll').forEach(el => {
+                const pos = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (pos < windowHeight - 60 && pos > -windowHeight) {
+                    el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
+                }
+            });
+        }
+
+        window.addEventListener('load', handleFadeScroll);
+        window.addEventListener('scroll', handleFadeScroll);
+
+        // ===== MOBILE MENU =====
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('🌸 Miomi Momousa website loaded! ✦ Memios forever! 💖');
+    </script>
+
+</body>
+</html>
